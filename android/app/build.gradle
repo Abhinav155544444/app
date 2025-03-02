@@ -1,0 +1,41 @@
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services" // ✅ Firebase plugin
+}
+
+android {
+    namespace = "com.example.rental_app"
+    compileSdk = 34
+
+    defaultConfig {
+        applicationId = "com.example.rental_app"
+        minSdkVersion 23  // ✅ Firebase requires API 23 or higher
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug // ✅ Use debug signing for now
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+flutter {
+    source = "../.."
+}
